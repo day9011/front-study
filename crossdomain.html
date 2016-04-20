@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cross Domain Example</title>
+    <script type="text/javascript">
+        function domainData(url, fn)
+        {
+            var isFirst = true;
+            var iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            var loadfn = function(){
+                if(isFirst){
+                    iframe.contentWindow.location = 'http://a.com/null.html';
+                    isFirst = false;
+                } else {
+                    fn(iframe.contentWindow.name);//通过iframe传递目标网站的name元素的数据,在此处返回给当前页面.
+                    iframe.contentWindow.document.write('');
+                    iframe.contentWindow.close();
+                    document.body.removeChild(iframe);
+                    iframe.src = '';
+                    iframe = null;
+                }
+            };
+            iframe.src = url;
+            if(iframe.attachEvent){
+                iframe.attachEvent('onload', loadfn);
+            } else {
+                iframe.onload = loadfn;
+            }
+            document.body.appendChild(iframe);
+        }
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+        domainData("http://www.runoob.com/try/angularjs/data/Customers_JSON.php", function (data) {
+            alert(data);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+header {
+    background-color: cyan;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+footer {
+    display: table;
+    background-color: #f6f4f0;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    clear: both;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height:100%;
+}
+
+body {
+    font: 14px/1.5 "Microsoft Yahei", sans-serif;
+}
+
+div.container {
+    position: relative;
+    display: table;
+    padding: 2%;
+    margin: 0;
+    width: 100%;
+    min-height:100% !important;
+    height: auto;
+    background-color: dimgray;
+}
+
+div.row {
+    display: table-row;
+    position: relative;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 5px;
+}
+
+div.row > div {
+    padding: 2%;
+}
+
+div.left, div.right {
+    display: table-cell;
+    border-radius: 10px;
+}
+
+div.left {
+    background-color: lightgoldenrodyellow;
+    width: 26%;
+    height: 100%;
+}
+
+div.split {
+    width: 2%;
+    height: 100%;
+}
+
+div.right {
+    width: 70%;
+    height: 100%;
+    background-color: white;
+}
+
+div.clearfloat {
+    clear: both;
+}
+
+th{
+    border:1px solid #d4d4d4;
+    padding:5px;
+    padding-top:7px;
+    padding-bottom:7px;
+    vertical-align:top;
+    text-align:center;
+}
+table {
+    border-collapse:collapse;
+    margin-bottom:4px;
+    margin-top:4px;
+    border: 1px solid #d4d4d4;
+}
+table tr:nth-child(odd){
+    background-color:#f6f4f0;
+    border: 1px solid #d4d4d4;
+}
+table tr:nth-child(even){
+    background-color:#fff;
+    border: 1px solid #d4d4d4;
+}
+table td {
+    padding: 5px;
+}
+table td:nth-child(1){
+    border: 1px solid #d4d4d4;
+    text-align: center;
+}
+/*选择所有后代需要用n来表示,n从0开始*/
+table td:nth-child(n+2){
+    border: 1px solid #d4d4d4;
+}

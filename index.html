@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="./layout.css">
+		<title>Welcome to HomePage of day9011</title>
+		<meta charset="utf-8">
+		<script type="text/javascript">
+			window.onresize = resizefont;
+			function resizefont() {
+				var c = document.getElementById('title_text');
+				var ctx = c.getContext('2d');
+				var str = "Welcome to day9011\'s HomePage!";
+				var width_cps;
+				c.width = window.innerWidth;
+				ctx.textAlign = "center";
+				if (window.innerWidth > 768) {
+					c.height = 50;
+					width_cps = 250;
+					ctx.clearRect(0,0,c.width,c.height);//need clear canvas
+					ctx.font = "italic bold 30px MirocraftYaHei, Arial";
+				} else {
+					c.height = 30;
+					width_cps = 170;
+					ctx.clearRect(0,0,c.width,c.height);
+					ctx.font = "italic bold 20px MirocraftYaHei, Arial";//set font after width
+				}
+				var grd = ctx.createLinearGradient(0, 0, c.width, 0);
+				grd.addColorStop(0, "black");
+				grd.addColorStop(0.5, "pink");
+				grd.addColorStop(1.0, "red");
+				ctx.strokeStyle = grd;
+				ctx.strokeText(str, c.width / 2 - width_cps, (c.height/2) + 10);
+			}
+		</script>
+		<!--通过设置ng-invalid可以通过状态改变元素的style-->
+		<style>
+			input.ng-invalid {
+				background-color: lightblue;
+			}
+		</style>
+	</head>
+	<body onload="resizefont()" ng-app="myApp">
+		<header>
+			<canvas id="title_text"></canvas>
+		</header>
+		<div class="container">
+			<div class="row">
+				<div class="left">
+					<a href="./study/front.html">Interview questions for front.</a><br>
+					<a href="./study/nodejs.html">Study record for nodejs.</a>
+				</div>
+				<div class="split"> </div>
+				<div class="right">
+					<!--only one app can define in AngularJS-->
+					<!--multi app model:
+					<div ng-app="ngAppStrictDemo" ng-strict-di>
+						<div ng-controller="GoodController1">
+							I can add: {{a}} + {{b}} =  {{ a+b }}
+
+							<p>This renders because the controller does not fail to
+							   instantiate, by using explicit annotation style (see
+							   script.js for details)
+							</p>
+						</div>
+
+						<div ng-controller="GoodController2">
+							Name: <input ng-model="name"><br />
+							Hello, {{name}}!
+
+							<p>This renders because the controller does not fail to
+							   instantiate, by using explicit annotation style
+							   (see script.js for details)
+							</p>
+						</div>
+
+						<div ng-controller="BadController">
+							I can add: {{a}} + {{b}} =  {{ a+b }}
+
+							<p>The controller could not be instantiated, due to relying
+							   on automatic function annotations (which are disabled in
+							   strict mode). As such, the content of this section is not
+							   interpolated, and there should be an error in your web console.
+							</p>
+						</div>
+					</div>
+					-->
+					<div ng-controller="myCtrl">
+						1st number: <input type="text" ng-model="num1"><br>
+						2nd number: <input type="text" ng-model="num2"><br>
+						<!--if you use '+', browser will do function as string.-->
+						<p>我的表达式： {{ num1 * num2 }}</p>
+						<!--ng-model 指令用于绑定应用程序数据到 HTML 控制器(input, select, textarea)的值。-->
+						<div style="visibility: hidden" ng-init="names=['Judi', 'Mike', 'Ken']"></div>
+						<!--ng-repeat 有局限性，选择的值是一个字符串:
+						使用 ng-options 指令，选择的值是一个对象：
+						ng-options使用对象作为数据源, x 为键(key), y 为值(value):
+						<select ng-model="selectedSite" ng-options="x for (x, y) in sites">-->
+						<select ng-model="selectedName" ng-options="x.name for x in people"></select>
+						<h1>you choose {{selectedName.name}}</h1>
+						<p>{{selectedName.skill}}</p>
+						<select ng-model="selectedSite">
+							<option ng-repeat="x in sites" value="{{x.url}}">{{x.site}}</option>
+						</select>
+						<h1>your choice is {{selectedSite}}</h1>
+						<p>使用 ng-repeat 来循环数组</p>
+						<ul>
+							<li ng-repeat="x in names">
+								{{ x }}
+							</li>
+						</ul>
+					</div>
+					<!--可以通过'|'加上参数对数据转换
+						currency格式化数字为货币格式。
+						filter从数组项中选择一个子集。filter:test(test为ng-model名称)
+						lowercase格式化字符串为小写。
+						orderBy根据某个表达式排列数组。| orderBy:'country'
+						uppercase格式化字符串为大写。
+						例如:
+						"x in names | filter:test | orderBy:'country'"
+						names就是filter的数组项,留下含有其中子集的项.
+					-->
+					<div>
+						input string: <input type="text" ng-model="test">
+						<p>{{ test | uppercase }}</p>
+					</div>
+					<!--使用了AngularJS模块检测邮箱地址-->
+					<form name="myForm">
+						Email: <input type="email" name="myAddress" ng-model="text">
+						<span ng-show="myForm.myAddress.$error.email">不是一个合法的邮箱地址</span>
+					</form>
+					<!--
+					<div ng-app="myApp" ng-controller="myCtrl">
+						<div ng-controller="test">{{test}}</div>
+
+					<h1>姓氏为 {{lastname}} 家族成员:</h1>
+
+					<ul>
+						<li ng-repeat="x in names">{{x}} {{lastname}}</li>
+					</ul>
+
+					</div>
+
+					<script>
+					app.controller('test', function($scope, $rootScope) {
+						$scope.test = "123";
+						$rootScope.lastname = "456";
+					});
+					</script>
+					$scope有作用域,限于ng-controller的自身对象,例如,app就不能访问myCtrl,而rootScope包含ng-app中所有HTML元素
+					-->
+					<div list></div>
+					<script type="text/javascript">
+						var app = angular.module('myApp', []);
+//						get or set data to element by controller
+						app.controller('myCtrl', function ($scope) {
+							$scope.num1 = 5;
+							$scope.num2 = 6;
+							$scope.people = [
+								{name : "Joe", skill : "ops"},
+								{name : "Anran", skill : "frontend"},
+								{name : "Mike", skill : "backend"}
+							];
+							$scope.sites = [
+								{site : "Google", url : "http://www.google.com"},
+								{site : "Runoob", url : "http://www.runoob.com"},
+								{site : "Taobao", url : "http://www.taobao.com"}
+							];
+						});
+						//在指定位置调用指令
+//						你可以通过以下方式来调用指令：
+//						元素名
+//						属性
+//						类名
+//						注释
+//						restrict 值可以是以下几种:
+//								E 只限元素名使用
+//						A 只限属性使用
+//						C 只限类名使用
+//						M 只限注释使用
+//						restrict 默认值为 EA, 即可以通过元素名和属性名来调用指令。
+						app.directive("list", function () {
+							return {
+								restrict: "EA",
+								template: "<h1>Catelogue</h1>"
+							}
+						});
+					</script>
+					<div>
+						输入你的名字:
+						<!--ng-model必须有,作为AngularJS的注册ID,如果一致则会相当于一个元素,同时修改两个元素-->
+						<input ng-model="myText" required>
+					</div>
+					<div ng-controller="myTest">
+						http-result1:<span ng-model="result">{{ result }}</span><br>
+						http-result2:<span ng-model="result2">{{ result2 }}</span><br>
+						self-service:<span ng-model="customService">{{ customService }}</span>
+					</div>
+					<script type="text/javascript">
+						app.service('myService', function () {
+							this.myFunc = function (x) {
+								return x.toString();
+							}
+						});
+//						$scope, $http, myService为所用到的服务的模块名
+						app.controller('myTest', function ($scope, $http, myService) {
+							var url = "http://www.w3schools.com/angular/customers.php";
+							$http.get(url).then(function success(response) {
+								//your code when success
+								var test = response.data.records[1].Name;
+								$scope.result = test;
+							}, function error(response) {
+								$scope.result = "error";
+							});
+//	使用CORS允许跨域操作,在服务器set_header:
+// 	Access-Control-Allow-Origin: http://www.example.com //允许的Origin,客户端为Origin标签
+// 	Access-Control-Allow-Methods: POST, GET, OPTIONS //允许的请求方式
+// 	Access-Control-Allow-Headers: X-PINGOTHER //此处为允许的头文件,客户端服务器一致
+// 	Access-Control-Max-Age: 1728000
+//	客户端:
+//	Origin: http://www.example.com
+//	Access-Control-Request-Method: POST
+//	Access-Control-Request-Headers: X-PINGOTHER
+// 同时，服务器返回 HTTP 头信息时，也必须打开 Access-Control-Allow-Credentials 选项。否则，浏览器会忽略服务器返回的回应。
+// Access-Control-Allow-Credentials: true
+
+							$http({
+								method: 'GET',
+								url: 'http://121.42.145.214:8888/news-num?cursor=10&num=3',
+								header: {
+									"Access-Control-Request-Headers" : "day9011",
+									"User-Agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36"
+								}
+							}).then(function success(response) {
+								var test = response.data.news[0].source;
+								$scope.result2 = test;
+								console.log(test);
+							}, function error(response) {
+								$scope.result2 = "error";
+								console.log(response.status);
+							});
+								$scope.customService = myService.myFunc(10);
+						});
+					</script>
+					<div ng-controller="customerTable">
+						<table>
+							<tr ng-repeat="x in names | orderBy:'Country'">
+								<td>{{ $index + 1 }}</td>
+								<td>{{ x.Name }}</td>
+								<td>{{ x.Country }}</td>
+							</tr>
+						</table>
+					</div>
+					<script type="text/javascript">
+						app.controller("customerTable", function ($scope, $http) {
+							$http({
+								method : "GET",
+								url : "http://www.w3schools.com/angular/customers.php",
+								header : {
+									"User-Agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36"
+								}
+							}).then(function success(response) {
+								var test = response.data.records;
+								$scope.names = test;
+							}, function error(response) {
+								console.log(response.status);
+							});
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<p>day9011's test!</p>
+		</footer>
+	</body>
+</html>

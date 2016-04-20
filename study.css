@@ -1,0 +1,94 @@
+body{
+	font-family: "Microsoft YaHei", Arial,Helvetica,sans-serif,"宋体";
+}
+
+body div {
+	text-align: center;
+	align-content: center;
+}
+
+body p {
+	font-size: 15px;
+}
+
+body h1 {
+	text-shadow: 5px 5px 5px #FF0000;
+	font-size: 25px;
+}
+
+body h3 {
+	text-shadow: 5px 5px 5px #FF0000;
+	font-size: 20px;
+}
+
+body h4 {
+	text-shadow: 5px 5px 5px #FF0000;
+	font-size: 18px;
+}
+
+body a {
+	display: block;
+}
+
+pre, code {
+    display: block;
+    background: none repeat scroll 0 0;
+    border-radius:4px 4px 4px 4px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px inset;
+    clear: both;
+    font-family: "Microsoft YaHei",'Consolas', 'Courier', 'Monaco', monospace;
+    color: #000000;
+    background-color: #f8f8f8;
+    margin: 5px 0px;
+    overflow: auto;
+    padding: 10px;
+    white-space: pre;
+    /*text-indent: 1em;*/
+}
+
+@media only screen and (min-width: 400px) and (max-width: 768px) {
+	body p {
+		font-size: 10px;
+	}
+	
+	body h1 {
+		font-size: 20px;
+	}
+
+	body h3 {
+		font-size: 15px;
+	}
+
+	body h4 {
+	font-size: 12px;
+	}
+
+}
+
+th{
+	border:1px solid #d4d4d4;
+	padding:5px;
+	padding-top:7px;
+	padding-bottom:7px;
+	vertical-align:top;
+	text-align:center;
+}
+table.reference{
+	border-collapse:collapse;
+	width:100%;
+	margin-bottom:4px;
+	margin-top:4px;
+	border: 1px solid #d4d4d4;
+}
+table.reference tr:nth-child(odd){
+	background-color:#f6f4f0;
+	border: 1px solid #d4d4d4;
+}
+table.reference tr:nth-child(even){
+	background-color:#fff;
+	border: 1px solid #d4d4d4;
+}
+table.reference td:nth-child(1){
+	border: 1px solid #d4d4d4;
+	text-align: center;
+}
