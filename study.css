@@ -46,25 +46,6 @@ pre, code {
     /*text-indent: 1em;*/
 }
 
-@media only screen and (min-width: 400px) and (max-width: 768px) {
-	body p {
-		font-size: 10px;
-	}
-	
-	body h1 {
-		font-size: 20px;
-	}
-
-	body h3 {
-		font-size: 15px;
-	}
-
-	body h4 {
-	font-size: 12px;
-	}
-
-}
-
 th{
 	border:1px solid #d4d4d4;
 	padding:5px;

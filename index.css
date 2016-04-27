@@ -1,0 +1,116 @@
+body {
+    font: 15px/1.5 "Microsoft Yahei", sans-serif;
+}
+
+div.container {
+    position: relative;
+    display: table;
+    padding: 2%;
+    margin: 0;
+    width: 100%;
+    min-height:100% !important;
+    height: auto;
+    background-color: dimgray;
+}
+
+div.row {
+    display: table-row;
+    position: relative;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 5px;
+}
+
+div.row > div {
+    padding: 2%;
+}
+
+div.left, div.right {
+    display: table-cell;
+    border-radius: 10px;
+}
+
+div.left {
+    background-color: lightgoldenrodyellow;
+    width: 26%;
+    height: 100%;
+}
+
+div.split {
+    width: 2%;
+    height: 100%;
+}
+
+div.right {
+    width: 70%;
+    height: 100%;
+    background-color: white;
+}
+
+div.clearfloat {
+    clear: both;
+}
+
+th{
+    border:1px solid #d4d4d4;
+    padding:5px;
+    padding-top:7px;
+    padding-bottom:7px;
+    vertical-align:top;
+    text-align:center;
+}
+table {
+    border-collapse:collapse;
+    margin-bottom:4px;
+    margin-top:4px;
+    border: 1px solid #d4d4d4;
+}
+table tr:nth-child(odd){
+    background-color:#f6f4f0;
+    border: 1px solid #d4d4d4;
+}
+table tr:nth-child(even){
+    background-color:#fff;
+    border: 1px solid #d4d4d4;
+}
+table td {
+    padding: 5px;
+}
+table td:nth-child(1){
+    border: 1px solid #d4d4d4;
+    text-align: center;
+}
+/*选择所有后代需要用n来表示,n从0开始*/
+table td:nth-child(n+2){
+    border: 1px solid #d4d4d4;
+}
+
+div.news-container {
+    /*inset 内部阴影*/
+    /*第一个px左右,第二个位置px上下,第三个阴影大小*/
+    -webkit-box-shadow: 10px 10px 10px #dae5ff;
+    -moz-box-shadow: 10px 10px 10px #DAE5FF;
+    box-shadow: 10px 10px 10px #DAE5FF;
+    border: 2px solid gray;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+div.news-container a {
+    color: black;
+}
+
+div.news-container > div.content {
+    text-align: left;
+    font-size: 12px;
+}
+
+h2 {
+    text-shadow: 5px 5px 5px #d4d4d4;
+    font-size: 25px;
+}
+
+h3 {
+    text-shadow: 5px 5px 5px #d4d4d4;
+    font-size: 18px;
+}

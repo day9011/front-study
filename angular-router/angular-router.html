@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+    <script src="https://code.angularjs.org/1.5.5/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.5/angular-route.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../layout.css">
+    <script src="../title.js"></script>
+    <script src="an-router.js"></script>
+    <meta charset="UTF-8">
+    <title>Study for angular router and bootstrap.</title>
+    <meta name="viewport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no">
+</head>
+<body onload="resizefont()" ng-app="routeApp">
+    <header>
+        <canvas id="title_text"></canvas>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Route demo index</h1>
+                <div ng-view></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-lg-6" style="background-color: #654321">
+                <left>
+                    <h1>Catalogue</h1>
+                </left>
+            </div>
+            <div class="col-sm-9 col-lg-6" style="background-color: #FF0000">
+                <right>
+                    <h1>Content</h1>
+                </right>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>day9011's test!</p>
+    </footer>
+</body>
+</html>
